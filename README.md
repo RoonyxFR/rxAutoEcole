@@ -6,7 +6,9 @@ Avec rxAutoEcole, l'optimisation vous est garantie. Vous retrouverez l'examen du
 Démmarer ceci dans votre `server.cfg` ou `ressource.cfg` :
 
 ensure rxAutoEcole
+
 ensure rxAutoEcole_map
+
 
 Si vous ne possedez pas de esx_license, ajoutez aussi ceci : 
 
