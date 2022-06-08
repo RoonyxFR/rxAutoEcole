@@ -51,16 +51,16 @@ end
 -----------------------------------------------> Check Function <-----------------------------------------------
 
 function checkLicence()
-	ESX.TriggerServerCallback("esx_license:checkLicense", function(codeCheck)
+	ESX.TriggerServerCallback("rx:checkLicense", function(codeCheck)
 		code = codeCheck
 	end, GetPlayerServerId(PlayerId()), "dmv")
-	ESX.TriggerServerCallback("esx_license:checkLicense", function(codeCheck)
-		voiture = codeCheck
+	ESX.TriggerServerCallback("rx:checkLicense", function(voitureCheck)
+		voiture = voitureCheck
 	end, GetPlayerServerId(PlayerId()), "drive")
-	ESX.TriggerServerCallback("esx_license:checkLicense", function(codeCheck)
+	ESX.TriggerServerCallback("rx:checkLicense", function(codeCheck)
 		moto = codeCheck
 	end, GetPlayerServerId(PlayerId()), "drive_bike")
-	ESX.TriggerServerCallback("esx_license:checkLicense", function(codeCheck)
+	ESX.TriggerServerCallback("rx:checkLicense", function(codeCheck)
 		camion = codeCheck
 	end, GetPlayerServerId(PlayerId()), "drive_truck")
 end
