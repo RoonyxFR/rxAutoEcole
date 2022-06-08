@@ -9,12 +9,7 @@ ensure rxAutoEcole
 
 ensure rxAutoEcole_map
 
-
-Si vous ne possedez pas de esx_license, ajoutez aussi ceci : 
-
-ensure esx_license    (N'oublier pas d'ajouter le sql)
-
-pour finir rendez-vous dans rxAutoEcole et rentrez le sql que j'ai mis sur SQL.
+Pour finir rendez-vous dans rxAutoEcole et rentrez le sql que j'ai mis sur votre PHP.
 
 ## Preview
 
