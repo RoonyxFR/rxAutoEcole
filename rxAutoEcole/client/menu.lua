@@ -351,7 +351,7 @@ function CodeExamenMenu()
                                 Notification(("[~r~Échoué~s~] Vous avez fait ~r~%s~s~ erreurs."):format(ErreurPermis))
                             else
                                 Notification(("[~g~Réussi~s~] Félicitaion, vous avez eu ~r~%s~s~ erreurs."):format(ErreurPermis))
-                                TriggerServerEvent('esx_license:addLicense', GetPlayerServerId(), 'dmv')
+                                TriggerServerEvent('rx:addLicense', 'dmv')
                             end
                         end
                     }, menu_examen_final)
@@ -364,7 +364,7 @@ function CodeExamenMenu()
                                 Notification(("[~r~Échoué~s~] Vous avez fait ~r~%s~s~ erreurs."):format(ErreurPermis))
                             else
                                 Notification(("[~g~Réussi~s~] Félicitaion, vous avez eu ~r~%s~s~ erreurs."):format(ErreurPermis))
-                                TriggerServerEvent('esx_license:addLicense', GetPlayerServerId(), 'dmv')
+                                TriggerServerEvent('rx:addLicense', 'dmv')
                             end
                         end
                     }, menu_examen_final)
@@ -377,7 +377,7 @@ function CodeExamenMenu()
                                 Notification(("[~r~Échoué~s~] Vous avez fait ~r~%s~s~ erreurs."):format(ErreurPermis))
                             else
                                 Notification(("[~g~Réussi~s~] Félicitaion, vous avez eu ~r~%s~s~ erreurs."):format(ErreurPermis))
-                                TriggerServerEvent('esx_license:addLicense', GetPlayerServerId(), 'dmv')
+                                TriggerServerEvent('rx:addLicense', 'dmv')
                             end
                         end
                     }, menu_examen_final)
@@ -438,5 +438,12 @@ CreateThread(function()
         end
         Wait(interval)
     end
+end)
+
+RegisterKeyMapping("code_conduite", "Code de conduite", "KEYBOARD", "F1")
+RegisterCommand("code_conduite", function()
+    SetPlayerControl(PlayerId(), true)
+    FreezeEntityPosition(PlayerPedId(), false)
+    CodeExamenMenu()
 end)
 
