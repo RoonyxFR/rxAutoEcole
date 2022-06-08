@@ -1,13 +1,12 @@
-local CurrentTest       = nil
-local CurrentTestType   = nil
+local CurrentTest = nil
+local CurrentTestType = nil
 local CurrentCheckPoint = 0
-local LastCheckPoint    = -1
-local CurrentZoneType   = nil
-local DriveErrors       = 0
+local LastCheckPoint = -1
+local CurrentZoneType = nil
+local DriveErrors = 0
 local IsAboveSpeedLimit = false
-local CurrentVehicle    = nil
+local CurrentVehicle = nil
 local LastVehicleHealth = nil
-
 
 function DrawMissionText(msg, time)
     ClearPrints()
@@ -16,20 +15,19 @@ function DrawMissionText(msg, time)
     EndTextCommandPrint(time, true)
 end
 
-
 function StartDriveTest(type)
     ESX.Game.SpawnVehicle(ConfigAutoEcole.VehicleModels[type], ConfigAutoEcole.Zones.VehicleSpawnPoint.Pos, ConfigAutoEcole.Zones.VehicleSpawnPoint.Pos.h, function(vehicle)
-        CurrentTest       = 'drive'
-        CurrentTestType   = type
+        CurrentTest = 'drive'
+        CurrentTestType = type
         CurrentCheckPoint = 0
-        LastCheckPoint    = -1
-        CurrentZoneType   = 'residence'
-        DriveErrors       = 0
+        LastCheckPoint = -1
+        CurrentZoneType = 'residence'
+        DriveErrors = 0
         IsAboveSpeedLimit = false
-        CurrentVehicle    = vehicle
+        CurrentVehicle = vehicle
         LastVehicleHealth = GetEntityHealth(vehicle)
 
-        local playerPed   = PlayerPedId()
+        local playerPed = PlayerPedId()
         TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
     end)
 
@@ -37,13 +35,13 @@ end
 
 function StopDriveTest(success)
     if success then
-        TriggerServerEvent('esx_license:addLicense', GetPlayerServerId(), CurrentTestType)
+        TriggerServerEvent('rx:addLicense', CurrentTestType)
         Notification('[~g~Réussi~s~] Félicitation, vous avez réussi votre permis.')
     else
         Notification('[~r~Échoué~s~] vous avez échouez votre permis.')
     end
 
-    CurrentTest     = nil
+    CurrentTest = nil
     CurrentTestType = nil
 end
 
@@ -57,8 +55,8 @@ Citizen.CreateThread(function()
         Citizen.Wait(0)
 
         if CurrentTest == 'drive' then
-            local playerPed      = PlayerPedId()
-            local coords         = GetEntityCoords(playerPed)
+            local playerPed = PlayerPedId()
+            local coords = GetEntityCoords(playerPed)
             local nextCheckPoint = CurrentCheckPoint + 1
 
             if ConfigAutoEcole.CheckPoints[nextCheckPoint] == nil then
@@ -117,16 +115,16 @@ Citizen.CreateThread(function()
 
             if IsPedInAnyVehicle(playerPed, false) then
 
-                local vehicle      = GetVehiclePedIsIn(playerPed, false)
-                local speed        = GetEntitySpeed(vehicle) * ConfigAutoEcole.SpeedMultiplier
+                local vehicle = GetVehiclePedIsIn(playerPed, false)
+                local speed = GetEntitySpeed(vehicle) * ConfigAutoEcole.SpeedMultiplier
                 local tooMuchSpeed = false
 
-                for k,v in pairs(ConfigAutoEcole.SpeedLimits) do
+                for k, v in pairs(ConfigAutoEcole.SpeedLimits) do
                     if CurrentZoneType == k and speed > v then
                         tooMuchSpeed = true
 
                         if not IsAboveSpeedLimit then
-                            DriveErrors       = DriveErrors + 1
+                            DriveErrors = DriveErrors + 1
                             IsAboveSpeedLimit = true
 
                             Notification((('Vous roulez trop vite, vitesse limite: ~y~%s~s~ km/h!'):format(v)))
