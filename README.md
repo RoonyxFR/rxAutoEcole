@@ -15,6 +15,6 @@ Pour finir rendez-vous dans rxAutoEcole et rentrez le sql que j'ai mis sur votre
 
 [Preview](https://youtu.be/DP9snIjfJVw)
 
-## Mon discord
+## Discord support
 
 [Discord](https://discord.gg/JnZjSZj)
