@@ -2,7 +2,7 @@ fx_version 'adamant'
 game 'gta5'
 author 'Roonyx'
 discord 'Pour du support -> https://discord.gg/HrW4ucmkk6'
-description 'Créer un item depuis le jeu'
+description 'Auto école en RageUI V2'
 
 
 -----------------------------------------> RageUI <-----------------------------------------
