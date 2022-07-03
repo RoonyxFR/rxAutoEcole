@@ -439,11 +439,3 @@ CreateThread(function()
         Wait(interval)
     end
 end)
-
-RegisterKeyMapping("code_conduite", "Code de conduite", "KEYBOARD", "F1")
-RegisterCommand("code_conduite", function()
-    SetPlayerControl(PlayerId(), true)
-    FreezeEntityPosition(PlayerPedId(), false)
-    CodeExamenMenu()
-end)
-
